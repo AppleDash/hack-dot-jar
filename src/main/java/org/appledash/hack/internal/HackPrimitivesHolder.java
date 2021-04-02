@@ -52,42 +52,42 @@ public class HackPrimitivesHolder {
     private List<String> advice;
 
     public List<String> getNouns() {
-        return nouns;
+        return this.nouns;
     }
 
     public String[][] getVerbs() {
-        return verbs;
+        return this.verbs;
     }
 
     public List<String> getServices() {
-        return services;
+        return this.services;
     }
 
     public List<String> getHackObjects() {
-        return hackObjects;
+        return this.hackObjects;
     }
 
     public List<String> getSingularTools() {
-        return singularTools;
+        return this.singularTools;
     }
 
     public List<String> getPluralTools() {
-        return pluralTools;
+        return this.pluralTools;
     }
 
     public List<String> getPeople() {
-        return people;
+        return this.people;
     }
 
     public List<String> getSystems() {
-        return systems;
+        return this.systems;
     }
 
     public List<String> getTimes() {
-        return times;
+        return this.times;
     }
 
     public List<String> getAdvice() {
-        return advice;
+        return this.advice;
     }
 }

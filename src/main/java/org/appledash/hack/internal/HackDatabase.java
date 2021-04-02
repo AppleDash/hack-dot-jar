@@ -91,11 +91,11 @@ public class HackDatabase {
     }
 
     private String[] getBaseVerb() {
-        return randomChoice(Arrays.asList(this.primitivesHolder.getVerbs()));
+        return this.randomChoice(Arrays.asList(this.primitivesHolder.getVerbs()));
     }
 
     private String getHackObject() {
-        return randomChoice(this.primitivesHolder.getHackObjects());
+        return this.randomChoice(this.primitivesHolder.getHackObjects());
     }
 
     private String computeVerb(int n) {

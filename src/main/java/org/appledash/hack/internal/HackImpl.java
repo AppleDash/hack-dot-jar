@@ -35,7 +35,7 @@ public class HackImpl implements Hack {
             expr = this.reduce(expr);
         }
 
-        expr = indefiniteArticles(expr);
+        expr = this.indefiniteArticles(expr);
 
         return expr.substring(0, 1).toUpperCase() + expr.substring(1);
     }
