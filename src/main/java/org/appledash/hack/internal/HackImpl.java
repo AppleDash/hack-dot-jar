@@ -18,11 +18,22 @@
 package org.appledash.hack.internal;
 
 import org.appledash.hack.Hack;
+import org.appledash.hack.HackDatabase;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class HackImpl implements Hack {
-    private final HackDatabase database = new HackDatabase();
+    private final Random RANDOM = new Random();
+    private final HackDatabase database;
+
+    public HackImpl() {
+        this(new HackDatabaseImpl());
+    }
+
+    public HackImpl(HackDatabase database) {
+        this.database = database;
+    }
 
     @Override
     public String getAdvice() {
@@ -71,6 +82,8 @@ public class HackImpl implements Hack {
                     uppercase = true;
                 } else if (modifier == 'p') {
                     plural = true;
+                } else if (modifier == 'P') {
+                    plural = RANDOM.nextBoolean();
                 }
 
                 word = word.substring(0, colonIndex);

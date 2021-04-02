@@ -30,4 +30,7 @@ public interface Hack {
     static Hack create() {
         return new HackImpl();
     }
+    static Hack create(HackDatabase hackDatabase) {
+        return new HackImpl(hackDatabase);
+    }
 }
