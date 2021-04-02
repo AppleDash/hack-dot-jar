@@ -71,6 +71,7 @@ public class HackImpl implements Hack {
 
             boolean uppercase = false;
             boolean plural = false;
+            boolean conjunct = false;
 
             String word = split[i];
             int colonIndex = word.indexOf(':');
@@ -84,6 +85,8 @@ public class HackImpl implements Hack {
                     plural = true;
                 } else if (modifier == 'P') {
                     plural = RANDOM.nextBoolean();
+                } else if (modifier == 'c') {
+                    conjunct = true;
                 }
 
                 word = word.substring(0, colonIndex);
@@ -93,6 +96,10 @@ public class HackImpl implements Hack {
 
             if (plural) {
                 word = this.attemptPluralization(word);
+            }
+
+            if (conjunct) {
+                word = this.attemptConjunction(word);
             }
 
             if (uppercase) {
@@ -120,5 +127,13 @@ public class HackImpl implements Hack {
         }
 
         return s + "s";
+    }
+
+    private String attemptConjunction(String s) {
+        if ("aeiou".indexOf(s.charAt(0)) != -1) {
+            return "an " + s;
+        }
+
+        return "a " + s;
     }
 }

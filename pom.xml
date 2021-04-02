@@ -6,7 +6,7 @@
 
     <groupId>org.appledash</groupId>
     <artifactId>hack-dot-jar</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 
     <dependencies>
         <dependency>
