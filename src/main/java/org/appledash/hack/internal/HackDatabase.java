@@ -16,7 +16,9 @@
  */
 package org.appledash.hack.internal;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.InputStreamReader;
 import java.util.*;
@@ -24,62 +26,18 @@ import java.util.function.Supplier;
 
 public class HackDatabase {
     private static final Random RANDOM = new Random();
-    private final HackPrimitivesHolder primitivesHolder;
     private final Map<String, Supplier<String>> reductionSuppliers = new HashMap<>();
 
     public HackDatabase() {
-        this.primitivesHolder = new GsonBuilder().setLenient().create().fromJson(
-                new InputStreamReader(
-                        this.getClass().getClassLoader().getResourceAsStream("hack.json")
-                ),
-                HackPrimitivesHolder.class
-        );
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = jsonParser.parse(new InputStreamReader(
+                this.getClass().getClassLoader().getResourceAsStream("hack.json")
+        )).getAsJsonObject();
 
-        this.reductionSuppliers.put("verb", () -> this.computeVerb(0));
-        this.reductionSuppliers.put("verbs", () -> this.computeVerb(1));
-        this.reductionSuppliers.put("verbed", () -> this.computeVerb(2));
-        this.reductionSuppliers.put("verber", () -> this.computeVerb(3));
-        this.reductionSuppliers.put("verbing", () -> this.computeVerb(4));
-
-        this.reductionSuppliers.put("noun", () -> this.randomChoice(this.primitivesHolder.getNouns()));
-        this.reductionSuppliers.put("nouns", () -> {
-            String noun = this.randomChoice(this.primitivesHolder.getNouns());
-            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(noun.charAt(noun.length() - 1)) == -1) {
-                return noun + "'s";
-            }
-
-            if ("xs".indexOf(noun.toLowerCase().charAt(noun.length() - 1)) != -1) {
-                return noun + "es";
-            }
-
-            return noun + "s";
-        });
-
-        this.reductionSuppliers.put("hack",
-                () -> this.computeVerb(0) + " " + this.getHackObject()
-        );
-        this.reductionSuppliers.put("hacks",
-                () -> this.computeVerb(1) + " " + this.getHackObject()
-        );
-        this.reductionSuppliers.put("hacked",
-                () -> this.computeVerb(2) + " " + this.getHackObject()
-        );
-        this.reductionSuppliers.put("hacking",
-                () -> this.computeVerb(4) + " " + this.getHackObject()
-        );
-
-        this.reductionSuppliers.put("service", () -> this.randomChoice(this.primitivesHolder.getServices()));
-
-        this.reductionSuppliers.put("tool", () -> this.randomChoice(this.primitivesHolder.getSingularTools()));
-        this.reductionSuppliers.put("tools", () -> this.randomChoice(this.primitivesHolder.getPluralTools()));
-
-        this.reductionSuppliers.put("person", () -> this.randomChoice(this.primitivesHolder.getPeople()));
-        this.reductionSuppliers.put("system", () -> this.randomChoice(this.primitivesHolder.getSystems()));
-        this.reductionSuppliers.put("time", () -> this.randomChoice(this.primitivesHolder.getTimes()));
-    }
-
-    public String getBaseAdvice() {
-        return this.randomChoice(this.primitivesHolder.getAdvice());
+        for (String key : jsonObject.keySet()) {
+            String[] values = jsonArrayToStringArray(jsonObject.getAsJsonArray(key));
+            this.reductionSuppliers.put(key, values.length == 1 ? (() -> values[0]) : () -> values[RANDOM.nextInt(values.length)]);
+        }
     }
 
     public String getValue(String key) {
@@ -90,27 +48,13 @@ public class HackDatabase {
         return this.reductionSuppliers.get(key).get();
     }
 
-    private String[] getBaseVerb() {
-        return this.randomChoice(Arrays.asList(this.primitivesHolder.getVerbs()));
-    }
+    private static String[] jsonArrayToStringArray(JsonArray array) {
+        String[] stringArray = new String[array.size()];
 
-    private String getHackObject() {
-        return this.randomChoice(this.primitivesHolder.getHackObjects());
-    }
-
-    private String computeVerb(int n) {
-        String[] verbInfo = this.getBaseVerb();
-        String base = verbInfo[0];
-        String suffix = verbInfo[n];
-
-        if (suffix.charAt(0) != '-') {
-            return suffix; // suffix is not a suffix at all in this case, but a replacement.
+        for (int i = 0; i < stringArray.length; i++) {
+            stringArray[i] = array.get(i).getAsString();
         }
 
-        return base + suffix.substring(1);
-    }
-
-    private <T> T randomChoice(List<T> collection) {
-        return collection.get(RANDOM.nextInt(collection.size()));
+        return stringArray;
     }
 }

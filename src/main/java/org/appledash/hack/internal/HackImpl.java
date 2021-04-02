@@ -26,7 +26,7 @@ public class HackImpl implements Hack {
 
     @Override
     public String getAdvice() {
-        return this.evaluate(this.database.getBaseAdvice());
+        return this.evaluate(this.database.getValue("advice"));
     }
 
     @Override
@@ -58,16 +58,29 @@ public class HackImpl implements Hack {
                 continue;
             }
 
-            String word = split[i];
-
             boolean uppercase = false;
+            boolean plural = false;
 
-            if (word.chars().allMatch(c -> "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) != -1)) {
-                uppercase = true;
-                word = word.toLowerCase();
+            String word = split[i];
+            int colonIndex = word.indexOf(':');
+
+            if (colonIndex != -1) {
+                char modifier = word.charAt(colonIndex + 1);
+
+                if (modifier == 'U') {
+                    uppercase = true;
+                } else if (modifier == 'p') {
+                    plural = true;
+                }
+
+                word = word.substring(0, colonIndex);
             }
 
             word = this.database.getValue(word);
+
+            if (plural) {
+                word = this.attemptPluralization(word);
+            }
 
             if (uppercase) {
                 word = word.toUpperCase();
@@ -82,5 +95,17 @@ public class HackImpl implements Hack {
     private String indefiniteArticles(String s) {
         return s.replaceAll("([aA])\\(([nN])\\) ([AEFHILMNORSXaeiou])", "$1$2 $3")
                 .replaceAll("([aA])\\([nN]\\) ", "$1 ");
+    }
+
+    private String attemptPluralization(String s) {
+        if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(s.charAt(s.length() - 1)) == -1) {
+            return s + "'s";
+        }
+
+        if ("xs".indexOf(s.toLowerCase().charAt(s.length() - 1)) != -1) {
+            return s + "es";
+        }
+
+        return s + "s";
     }
 }

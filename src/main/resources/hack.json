@@ -1,5 +1,5 @@
 {
-  "nouns": [
+  "noun": [
     "TCP", "IP", "UDP", "BGP", "DNS", "ARP spoof", "ARP", "JavaScript",
     "HTML", "CSS", "XML", "SOAP", "REST", "SSL", "socket", "BSD", "linux",
     "MPI", "OpenMP", "SYN/ACK", "kernel", "ELF", "COFF", "68000", "x86",
@@ -11,68 +11,242 @@
     "GNU/<noun>"
   ],
 
-  "verbs": [
-    /*     verb       verbs      verbed        verber             verbing */
-    [ "compile",       "-s",        "-d",        "-r",        "compiling" ],
-    [ "link",          "-s",       "-ed",       "-er",             "-ing" ],
-    [ "assemble",      "-s",        "-d",        "-r",       "assembling" ],
-    [ "load",          "-s",       "-ed",       "-er",             "-ing" ],
-    [ "boot",          "-s",       "-ed",       "-er",             "-ing" ],
-    [ "reset",         "-s",     "reset",      "-ter",            "-ting" ],
-    [ "remove",        "-s",        "-d",        "-r",         "removing" ],
-    [ "decompile",     "-s",        "-d",        "-r",      "decompiling" ],
-    [ "unlink",        "-s",       "-ed",       "-er",             "-ing" ],
-    [ "disassemble",   "-s",        "-d",        "-r",    "disassembling" ],
-    [ "unload",        "-s",       "-ed",       "-er",             "-ing" ],
-    [ "parse",         "-s",        "-d",        "-r",          "parsing" ],
-    [ "archive",       "-s",        "-d",        "-r",        "archiving" ],
-    [ "cherry-pick",   "-s",       "-ed",       "-er",             "-ing" ],
-    [ "overwrite",     "-s", "overwrote",        "-r",      "overwriting" ],
-    [ "edit",          "-s",       "-ed",       "-or",             "-ing" ],
-    [ "compute",       "-s",        "-d",        "-r",        "computing" ],
-    [ "release",       "-s",        "-d",        "-r",        "releasing" ],
-    [ "transmit",      "-s",      "-ted",      "-ter",            "-ting" ],
-    [ "receive",       "-s",        "-d",        "-r",        "receiving" ],
-    [ "analyze",       "-s",        "-d",        "-r",        "analyzing" ],
-    [ "print",         "-s",       "-ed",       "-er",             "-ing" ],
-    [ "save",          "-s",        "-d",        "-r",           "saving" ],
-    [ "erase",         "-s",        "-d",        "-r",          "erasing" ],
-    [ "install",       "-s",       "-ed",       "-er",             "-ing" ],
-    [ "scan",          "-s",      "-ned",      "-ner",            "-ning" ],
-    [ "port scan",     "-s",      "-ned",      "-ner",            "-ning" ],
-    [ "nmap",          "-s",      "-ped",      "-per",            "-ping" ],
-    [ "DDOS",         "-es",      "-sed",      "-ser",            "-sing" ],
-    [ "exploit",       "-s",       "-ed",       "-er",             "-ing" ],
-    [ "send",          "-s",      "sent",       "-er",             "-ing" ],
-    [ "write",         "-s",     "wrote",        "-r",          "writing" ],
-    [ "detect",        "-s",       "-ed",       "-or",             "-ing" ],
-    [ "sniff",         "-s",       "-ed",       "-er",             "-ing" ],
-
-    [ "look up", "looks up", "looked up", "looker upper", "looking up" ],
-    [ "check out", "checks out", "checked out", "checker outer", "checking out" ],
-    [ "query", "queries", "queried", "querier", "querying" ]
+  "verb": [
+    "compile",
+    "link",
+    "assemble",
+    "load",
+    "boot",
+    "reset",
+    "remove",
+    "decompile",
+    "unlink",
+    "disassemble",
+    "unload",
+    "parse",
+    "archive",
+    "cherry-pick",
+    "overwrite",
+    "edit",
+    "compute",
+    "release",
+    "transmit",
+    "receive",
+    "analyze",
+    "print",
+    "save",
+    "erase",
+    "install",
+    "scan",
+    "port scan",
+    "nmap",
+    "DDoS",
+    "exploit",
+    "send",
+    "write",
+    "detect",
+    "sniff",
+    "look up",
+    "check out",
+    "query"
   ],
 
-  "services": [
+  "verbs": [
+    "compiles",
+    "links",
+    "assembles",
+    "loads",
+    "boots",
+    "resets",
+    "removes",
+    "decompiles",
+    "unlinks",
+    "disassembles",
+    "unloads",
+    "parses",
+    "archives",
+    "cherry-picks",
+    "overwrites",
+    "edits",
+    "computes",
+    "releases",
+    "transmits",
+    "receives",
+    "analyzes",
+    "prints",
+    "saves",
+    "erases",
+    "installs",
+    "scans",
+    "port scans",
+    "nmaps",
+    "DDoSes",
+    "exploits",
+    "sends",
+    "writes",
+    "detects",
+    "sniffs",
+    "looks up",
+    "checks out",
+    "queries"
+  ],
+
+  "verbed": [
+    "compiled",
+    "linked",
+    "assembled",
+    "loaded",
+    "booted",
+    "reset",
+    "removed",
+    "decompiled",
+    "unlinked",
+    "disassembled",
+    "unloaded",
+    "parsed",
+    "archived",
+    "cherry-picked",
+    "overwrote",
+    "edited",
+    "computed",
+    "released",
+    "transmitted",
+    "received",
+    "analyzed",
+    "printed",
+    "saved",
+    "erased",
+    "installed",
+    "scanned",
+    "port scanned",
+    "nmapped",
+    "DDoSed",
+    "exploited",
+    "sent",
+    "wrote",
+    "detected",
+    "sniffed",
+    "looked up",
+    "checked out",
+    "queried"
+  ],
+
+  "verber": [
+    "compiler",
+    "linker",
+    "assembler",
+    "loader",
+    "booter",
+    "resetter",
+    "remover",
+    "decompiler",
+    "unlinker",
+    "disassembler",
+    "unloader",
+    "parser",
+    "archiver",
+    "cherry-picker",
+    "overwriter",
+    "editor",
+    "computer",
+    "releaser",
+    "transmitter",
+    "receiver",
+    "analyzer",
+    "printer",
+    "saver",
+    "eraser",
+    "installer",
+    "scanner",
+    "port scanner",
+    "nmapper",
+    "DDoSer",
+    "exploiter",
+    "sender",
+    "writer",
+    "detector",
+    "sniffer",
+    "looker upper",
+    "checker outer",
+    "querier"
+  ],
+
+  "verbing": [
+    "compiling",
+    "linking",
+    "assembling",
+    "loading",
+    "booting",
+    "resetting",
+    "removing",
+    "decompiling",
+    "unlinking",
+    "disassembling",
+    "unloading",
+    "parsing",
+    "archiving",
+    "cherry-picking",
+    "overwriting",
+    "editing",
+    "computing",
+    "releasing",
+    "transmitting",
+    "receiving",
+    "analyzing",
+    "printing",
+    "saving",
+    "erasing",
+    "installing",
+    "scanning",
+    "port scanning",
+    "nmapping",
+    "DDoSing",
+    "exploiting",
+    "sending",
+    "writing",
+    "detecting",
+    "sniffing",
+    "looking up",
+    "checking out",
+    "querying"
+  ],
+
+  "hack": [
+    "<verb> <object>"
+  ],
+
+  "hacks": [
+    "<verbs> <object>"
+  ],
+
+  "hacked": [
+    "<verbed> <object>"
+  ],
+
+  "hacking": [
+    "<verbing> <object>"
+  ],
+
+  "service": [
     "Google", "Amazon", "Stack Overflow", "Freenode", "EFnet", "Usenet",
     "this old GeoCities page", "my website", "<person>'s website"
   ],
 
-  "hack_objects": [
+  "object": [
     "the <noun>", "a(n) <noun>", "the victim's <noun>", "some <noun>",
     "a(n) <verber> from <service>", "<service>'s <noun>",
     "the freeware <noun>", "a configurable <noun>", "a working <noun>",
     "a pre-<verbed> <verber>"
   ],
 
-  "singular_tools": [
+  "tool": [
     "<noun> <verber>",
     "<verbed> <noun>",
     "<verber>",
-    "<verber> for <nouns>",
+    "<verber> for <noun:p>",
     "<verbing> <tool>",
     "thing that <verbs>",
-    "thing for <verbing> <nouns>",
+    "thing for <verbing> <noun:p>",
     "pre-<noun> <verber>",
     "anti-<noun> <verber>",
     "<verbing> tool",
@@ -81,16 +255,16 @@
     "<verber>-<verber> hybrid"
   ],
 
-  "plural_tools": [
+  "tools": [
     "<noun> <verber>s",
-    "<verbed> <nouns>",
+    "<verbed> <noun:p>",
     "<verber>s",
     "<verbing> <tools>",
     "things for <verbing>",
     "pre-<noun> <verber>s"
   ],
 
-  "people": [
+  "person": [
     "Linus Torvalds",
     "Alan Cox",
     "Con Colivas",
@@ -109,11 +283,11 @@
     "Sabu"
   ],
 
-  "systems": [
+  "system": [
     "Amiga", "C-64", "IBM PC", "Z80", "VAX", "the PDP-8"
   ],
 
-  "times": [
+  "time": [
     "way back", "a few years ago", "in the early 90's I think",
     "when everybody had a(n) <verber>",
     "before anybody knew who <person> was"
