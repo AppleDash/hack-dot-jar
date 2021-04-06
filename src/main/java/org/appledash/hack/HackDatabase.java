@@ -1,13 +1,14 @@
 package org.appledash.hack;
 
 import org.appledash.hack.internal.HackDatabaseImpl;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStream;
 
 public interface HackDatabase {
-    String getValue(String key);
+    @NotNull String getValue(@NotNull String key);
 
-    static HackDatabase create(InputStream inputStream) {
+    static @NotNull HackDatabase create(@NotNull InputStream inputStream) {
         return new HackDatabaseImpl(inputStream);
     }
 }

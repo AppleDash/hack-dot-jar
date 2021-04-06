@@ -17,6 +17,7 @@
 package org.appledash.hack;
 
 import org.appledash.hack.internal.HackImpl;
+import org.jetbrains.annotations.NotNull;
 
 public interface Hack {
     /**
@@ -24,13 +25,13 @@ public interface Hack {
      *
      * @return Hacking advice, in String format.
      */
-    String getAdvice();
-    String evaluate(String expr);
+    @NotNull String getAdvice();
+    @NotNull String evaluate(@NotNull String expr);
 
-    static Hack create() {
+    static @NotNull Hack create() {
         return new HackImpl();
     }
-    static Hack create(HackDatabase hackDatabase) {
+    static @NotNull Hack create(HackDatabase hackDatabase) {
         return new HackImpl(hackDatabase);
     }
 }

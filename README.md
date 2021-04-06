@@ -13,7 +13,7 @@ All credit for the content in `hack.json` and the general algorithm used goes to
 ```java
 import org.appledash.hack.Hack;
 
-class HackExample {
+public final class HackExample {
     public static void main(String[] args) {
         Hack hack = Hack.create();
         

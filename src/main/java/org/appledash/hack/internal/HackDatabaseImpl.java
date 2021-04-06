@@ -20,23 +20,25 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.appledash.hack.HackDatabase;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.function.Supplier;
 
 public class HackDatabaseImpl implements HackDatabase {
     private static final Random RANDOM = new Random();
-    private final Map<String, Supplier<String>> reductionSuppliers = new HashMap<>();
+    private final Map<String, @NotNull Supplier<@NotNull String>> reductionSuppliers = new HashMap<>();
 
     public HackDatabaseImpl() {
-        this(HackDatabaseImpl.class.getClassLoader().getResourceAsStream("hack.json"));
+        this(Objects.requireNonNull(HackDatabaseImpl.class.getClassLoader().getResourceAsStream("hack.json")));
     }
 
-    public HackDatabaseImpl(InputStream inputStream) {
+    public HackDatabaseImpl(@NotNull InputStream inputStream) {
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(new InputStreamReader(inputStream)).getAsJsonObject();
 
@@ -47,7 +49,7 @@ public class HackDatabaseImpl implements HackDatabase {
     }
 
     @Override
-    public String getValue(String key) {
+    public @NotNull String getValue(@NotNull String key) {
         if (!this.reductionSuppliers.containsKey(key)) {
             return "?" + key;
         }
@@ -55,7 +57,7 @@ public class HackDatabaseImpl implements HackDatabase {
         return this.reductionSuppliers.get(key).get();
     }
 
-    private static String[] jsonArrayToStringArray(JsonArray array) {
+    private static String @NotNull [] jsonArrayToStringArray(@NotNull JsonArray array) {
         String[] stringArray = new String[array.size()];
 
         for (int i = 0; i < stringArray.length; i++) {
